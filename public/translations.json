@@ -1,0 +1,12 @@
+{
+  "en": {
+    "localContext.greeting": "Hello!",
+    "navbar.contact": "Contact",
+    "navbar.about": "About"
+  },
+  "ro": {
+    "localContext.greeting": "Bună ziua!",
+    "navbar.contact": "Contact",
+    "navbar.about": "Despre"
+  }
+}
