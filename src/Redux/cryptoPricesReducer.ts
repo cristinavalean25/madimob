@@ -4,7 +4,6 @@ import {
   setEthereumPrice,
   setBnbPrice,
   setSolanaPrice,
-  setMaticPrice,
   setXrpPrice,
   setUsdtPrice,
 } from "./cryptoPricesActions";
@@ -15,7 +14,6 @@ export interface CryptoPricesState {
   ethereumPrice: number | null;
   bnbPrice: number | null;
   solanaPrice: number | null;
-  maticPrice: number | null;
   xrpPrice: number | null;
   usdtPrice: number | null;
   cryptoPrices: { [cryptoId: string]: { usd: number } } | null;
@@ -27,7 +25,6 @@ const initialState: CryptoPricesState = {
   ethereumPrice: null,
   bnbPrice: null,
   solanaPrice: null,
-  maticPrice: null,
   xrpPrice: null,
   usdtPrice: null,
   cryptoPrices: null,
@@ -39,7 +36,6 @@ type CryptoPricesAction = ReturnType<
   | typeof setEthereumPrice
   | typeof setBnbPrice
   | typeof setSolanaPrice
-  | typeof setMaticPrice
   | typeof setXrpPrice
   | typeof setUsdtPrice
 >;
@@ -69,10 +65,7 @@ const cryptoPricesReducer = (
       return {
         cryptoPrices: { ...state.cryptoPrices, solanaPrice: action.payload },
       };
-    case "SET_MATIC_PRICE":
-      return {
-        cryptoPrices: { ...state.cryptoPrices, maticPrice: action.payload },
-      };
+
     case "SET_XRP_PRICE":
       return {
         cryptoPrices: { ...state.cryptoPrices, xrpPrice: action.payload },

@@ -23,11 +23,6 @@ export const setSolanaPrice = (price: number) => ({
   payload: price,
 });
 
-export const setMaticPrice = (price: number) => ({
-  type: "SET_MATIC_PRICE" as const,
-  payload: price,
-});
-
 export const setXrpPrice = (price: number) => ({
   type: "SET_XRP_PRICE" as const,
   payload: price,

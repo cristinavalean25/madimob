@@ -38,7 +38,7 @@ function Contact() {
               <div className="contact-write">
                 <p>WhatsApp</p>
                 <Link
-                  to="https://wa.me/+40746750279"
+                  to="https://wa.me/+40740850331"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
