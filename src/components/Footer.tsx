@@ -9,13 +9,21 @@ function Footer() {
       <div className="text-container">
         <h3 className="text-white">{messages[locale].footer.text}</h3>
         <div className="footer-icons">
-          <Link to="/">
+          <Link
+            to="https://www.facebook.com/MADimob.ro"
+            target="blank"
+            rel="noopener noreferrer"
+          >
             <Facebook />
           </Link>
           <Link to="/">
             <Instagram />
           </Link>
-          <Link to="/">
+          <Link
+            to="https://wa.me/+40740850331"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <WhatsApp />
           </Link>
         </div>
