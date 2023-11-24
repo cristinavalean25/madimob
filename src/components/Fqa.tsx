@@ -23,10 +23,7 @@ function Fqa() {
         }}
       >
         <div className="container-faq">
-          <div
-            className="row  p-3"
-            style={{ minHeight: "calc(100vh - 100px)" }}
-          >
+          <div className="row  faq">
             <h2
               style={{
                 textAlign: "center",

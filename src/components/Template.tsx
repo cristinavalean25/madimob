@@ -10,11 +10,15 @@ import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../translations/GlobalContext";
-import roFlag from "../Images/ro.png";
 import usaFlag from "../Images/usa.png";
+import roFlag from "../Images/ro.png";
 
 function Template() {
   const { locale, messages, setLocale } = useGlobalContext();
+
+  const handleLanguageChange = (newLocale: string) => {
+    setLocale(newLocale);
+  };
 
   const images = [
     {
@@ -33,10 +37,6 @@ function Template() {
       text: messages[locale].template.slide_3,
     },
   ];
-
-  const handleLanguageChange = (newLocale: string) => {
-    setLocale(newLocale);
-  };
 
   return (
     <>
@@ -62,37 +62,23 @@ function Template() {
               src={image.imgSrc}
               alt={`Slide ${image.id}`}
             />
-            <div
-              className="carousel-caption"
-              style={{
-                position: "absolute",
-                top: "60%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                textAlign: "center",
-                color: "#fff",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
-              }}
-            >
+            <div className="carousel-caption carousel-caption-2">
               <h3>{image.text}</h3>
             </div>
           </Carousel.Item>
         ))}
       </Carousel>
 
-      <div className="container-bottom">
+      <div className="container-bottom ">
         <div className="row">
           <div className="col-md-4 mb-4 text-center mb-md-0">
-            <div
-              className="template-container"
-              style={{ backgroundColor: "#191919" }}
-            >
+            <div className="template-container">
               <Link
                 to="/Contact"
                 style={{ textDecoration: "none", color: "#fff" }}
               >
                 <h3> {messages[locale].template.link_1}</h3>
-                <p className="link-text" style={{ fontSize: "17px" }}>
+                <p className="link-text">
                   {messages[locale].template.shortDescription}
                 </p>
               </Link>
@@ -100,16 +86,13 @@ function Template() {
           </div>
 
           <div className="col-md-4 mb-4 text-center mb-md-0">
-            <div
-              className="template-container"
-              style={{ backgroundColor: "#191919", color: "#fff" }}
-            >
+            <div className="template-container">
               <h3>{messages[locale].template.link_2}</h3>
               <div className="container-logo">
                 <div className="row logo-img">
                   <img
                     src={evfiam}
-                    alt=""
+                    alt="evfiam"
                     style={{
                       marginBottom: 20,
                       marginTop: 20,
@@ -119,14 +102,14 @@ function Template() {
                   />
                   <img
                     src={multivers}
-                    alt=""
+                    alt="multivers"
                     style={{ maxWidth: "50%", height: "auto" }}
                   />
                 </div>
                 <div className="row logo-img">
                   <img
                     src={gesp}
-                    alt=""
+                    alt="gesp"
                     style={{
                       marginBottom: 10,
                       marginTop: 20,
@@ -136,7 +119,7 @@ function Template() {
                   />
                   <img
                     src={XMoney}
-                    alt=""
+                    alt="XMoney"
                     style={{ maxWidth: "50%", height: "auto" }}
                   />
                 </div>
@@ -145,13 +128,10 @@ function Template() {
           </div>
 
           <div className="col-md-4 mb-4 text-center mb-md-0">
-            <div
-              className="template-container"
-              style={{ backgroundColor: "#191919" }}
-            >
+            <div className="template-container">
               <Link to="/Fqa" style={{ textDecoration: "none", color: "#fff" }}>
                 <h3> {messages[locale].template.link_3}</h3>
-                <p className="link-text" style={{ fontSize: "17px" }}>
+                <p className="link-text">
                   {messages[locale].template.shortDescription_1} <br />
                   {messages[locale].template.shortDescription_2}
                 </p>

@@ -43,6 +43,15 @@ code {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
+.carousel-caption-2 {
+  top: 50%;
+  left: 100%;
+  transform: translate(0%, -50%);
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
 .template-container {
   background-color: #fff;
   height: 150px;
@@ -56,6 +65,7 @@ code {
 .container-bottom {
   background-color: #000;
   padding-bottom: 2%;
+  position: relative;
 }
 
 .container-bottom .row {
@@ -63,7 +73,7 @@ code {
   margin: auto;
   display: flex;
   justify-content: space-between;
-  margin-top: -20px;
+  margin-top: -5%;
 }
 
 .contact-write a {
@@ -119,10 +129,27 @@ code {
     font-size: 1.1rem;
     text-align: center;
   }
+
   .container-contact {
     flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
     margin: 20px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .details-contact {
+    margin-top: 20px;
+  }
+
+  .contact-icon {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .contact-form {
+    margin-top: 20px;
   }
   .img-logo {
     align-items: center;
@@ -132,7 +159,6 @@ code {
   .crypto-price {
     flex-direction: column;
     justify-content: space-between;
-
     flex-wrap: wrap;
     display: flex;
     margin-top: 5%;
@@ -143,6 +169,32 @@ code {
   .contact-container {
     align-items: center;
     justify-content: center;
+  }
+  .details-contact {
+    margin-top: 5px;
+  }
+  .text-container {
+    min-width: 82%;
+    padding: 10px;
+  }
+  .row {
+    padding: 0;
+  }
+  .question {
+    flex-direction: column;
+    text-align: justify;
+  }
+
+  .faq {
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+    width: 100%;
+    flex: 1;
+  }
+
+  .question-content {
+    width: 100%;
+    margin-top: 10px;
   }
 }
 
@@ -163,7 +215,7 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .language-buttons button {
@@ -191,11 +243,14 @@ code {
 
 .template-container {
   background-color: #191919;
+  margin: 3px;
+  color: #fff;
 }
 
 .link-text {
   color: #fff;
   padding-bottom: -5px;
+  font-size: "17px";
 }
 
 /* FOOTER */
@@ -257,7 +312,6 @@ code {
   display: flex;
   align-items: center;
   flex-direction: row;
-
   background-color: #000;
   max-width: 1000px;
   width: 100%;
@@ -362,8 +416,13 @@ button[type="submit"]:hover {
   align-items: center;
   justify-content: center;
   background-color: #121212;
-  width: 71%;
+  min-width: 85%;
   margin-bottom: 20px;
+}
+
+.big-container-about {
+  background-color: #000;
+  align-items: center;
 }
 
 .body-text {
@@ -383,7 +442,7 @@ button[type="submit"]:hover {
 }
 
 .container-about .row {
-  max-width: 900px;
+  width: 900px;
   margin: 0 auto;
 }
 .img-owner {
@@ -410,18 +469,26 @@ button[type="submit"]:hover {
 
 .question {
   display: flex;
-
   align-items: center;
-  width: 50%;
+  max-width: 100%;
   margin-bottom: 1%;
+  text-align: justify;
 }
 
 .question-content {
-  text-align: center;
+  text-align: justify;
 }
 
 .btn-show {
   margin-left: 5%;
   background-color: #121212;
   color: #f47521;
+}
+
+.faq {
+  padding: 0 15px;
+  align-items: center;
+  width: 80%;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }

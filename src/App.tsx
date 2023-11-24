@@ -2,12 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Contact from "./components/Contact";
 import About from "./components/About";
-import GlobalProvider from "./translations/GlobalContext";
+import GlobalProvider, { useGlobalContext } from "./translations/GlobalContext";
 import Fqa from "./components/Fqa";
 import store from "./Redux/store";
 import { Provider } from "react-redux";
 
 function App() {
+  const {} = useGlobalContext();
+
   return (
     <Provider store={store}>
       <GlobalProvider>
