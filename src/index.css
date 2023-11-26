@@ -300,7 +300,7 @@ code {
 .bg-image {
   background-size: cover;
   background-repeat: no-repeat;
-  height: auto;
+  height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -416,6 +416,7 @@ button[type="submit"]:hover {
   align-items: center;
   justify-content: center;
   background-color: #121212;
+  backdrop-filter: blur(10px);
   min-width: 85%;
   margin-bottom: 20px;
 }
@@ -426,10 +427,11 @@ button[type="submit"]:hover {
 }
 
 .body-text {
-  font-size: 16px;
+  font-size: 17px;
   text-align: justify;
   text-indent: 30px;
   color: #fff;
+  line-height: 1.5;
 }
 
 .container-images img.img-fluid {
@@ -456,6 +458,14 @@ button[type="submit"]:hover {
   justify-content: center;
 }
 
+.about-title {
+  font-size: 34px;
+  color: #f47521;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
 /* FAQ */
 
 .container-faq {
@@ -464,6 +474,7 @@ button[type="submit"]:hover {
   justify-content: center;
   background-color: #121212;
   width: 71%;
+  height: fit-content;
   margin-bottom: 20px;
 }
 
@@ -491,4 +502,32 @@ button[type="submit"]:hover {
   width: 80%;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
+}
+
+.question-answer {
+  font-size: 17px;
+  text-indent: 30px;
+  text-align: justify;
+  margin-right: 10px;
+  line-height: 1.5;
+}
+
+.faq-title {
+  text-align: center;
+  padding: 1rem;
+  font-weight: 700;
+  color: #f47521;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
 }

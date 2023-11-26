@@ -9,42 +9,40 @@ import gesp from "../Images/gesp.png";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "../translations/GlobalContext";
 import usaFlag from "../Images/usa.png";
 import roFlag from "../Images/ro.png";
+import { FormattedMessage } from "react-intl";
 
-function Template() {
-  const { locale, messages, setLocale } = useGlobalContext();
+interface TemplateProps {
+  changeLanguage: (newLocale: string) => void;
+}
 
-  const handleLanguageChange = (newLocale: string) => {
-    setLocale(newLocale);
-  };
-
+const Template: React.FC<TemplateProps> = ({ changeLanguage }) => {
   const images = [
     {
       id: 1,
       imgSrc: Img1,
-      text: messages[locale].template.slide_1,
+      text: <FormattedMessage id="template.slide_1" />,
     },
     {
       id: 2,
       imgSrc: Img2,
-      text: messages[locale].template.slide_2,
+      text: <FormattedMessage id="template.slide_2" />,
     },
     {
       id: 3,
       imgSrc: Img3,
-      text: messages[locale].template.slide_3,
+      text: <FormattedMessage id="template.slide_3" />,
     },
   ];
 
   return (
     <>
       <div className="language-buttons">
-        <button onClick={() => handleLanguageChange("en")}>
+        <button onClick={() => changeLanguage("en")}>
           <img src={usaFlag} alt="USA Flag" className="flag" />
         </button>
-        <button onClick={() => handleLanguageChange("ro")}>
+        <button onClick={() => changeLanguage("ro")}>
           <img src={roFlag} alt="Romanian Flag" className="flag" />
         </button>
       </div>
@@ -77,9 +75,11 @@ function Template() {
                 to="/Contact"
                 style={{ textDecoration: "none", color: "#fff" }}
               >
-                <h3> {messages[locale].template.link_1}</h3>
+                <h3>
+                  <FormattedMessage id="template.link_1" />
+                </h3>
                 <p className="link-text">
-                  {messages[locale].template.shortDescription}
+                  <FormattedMessage id="template.shortDescription" />
                 </p>
               </Link>
             </div>
@@ -87,7 +87,10 @@ function Template() {
 
           <div className="col-md-4 mb-4 text-center mb-md-0">
             <div className="template-container">
-              <h3>{messages[locale].template.link_2}</h3>
+              <h3>
+                {" "}
+                <FormattedMessage id="template.link_2" />
+              </h3>
               <div className="container-logo">
                 <div className="row logo-img">
                   <img
@@ -130,10 +133,13 @@ function Template() {
           <div className="col-md-4 mb-4 text-center mb-md-0">
             <div className="template-container">
               <Link to="/Fqa" style={{ textDecoration: "none", color: "#fff" }}>
-                <h3> {messages[locale].template.link_3}</h3>
+                <h3>
+                  {" "}
+                  <FormattedMessage id="template.link_3" />
+                </h3>
                 <p className="link-text">
-                  {messages[locale].template.shortDescription_1} <br />
-                  {messages[locale].template.shortDescription_2}
+                  <FormattedMessage id="template.shortDescription_1" /> <br />
+                  <FormattedMessage id="template.shortDescription_2" />
                 </p>
               </Link>
             </div>
@@ -142,6 +148,6 @@ function Template() {
       </div>
     </>
   );
-}
+};
 
 export default Template;

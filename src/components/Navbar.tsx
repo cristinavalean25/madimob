@@ -19,12 +19,18 @@ import bnb from "../Images/bnb.png";
 import solana from "../Images/solana.png";
 import xrp from "../Images/xrp.png";
 import usdt from "../Images/usdt.png";
-import { useGlobalContext } from "../translations/GlobalContext";
-import { CryptoPricesState } from "../Redux/cryptoPricesReducer";
 
-function Navbar() {
-  const { locale, messages } = useGlobalContext();
+import { CryptoPricesState } from "../Redux/cryptoPricesReducer";
+import { FormattedMessage, useIntl } from "react-intl";
+
+interface NavbarProps {
+  changeLanguage: (newLocale: string) => void;
+  locale: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ changeLanguage, locale }) => {
   const dispatch = useDispatch();
+  const intl = useIntl();
 
   const bitcoinPrice = useSelector(
     (state: { cryptoPrices: CryptoPricesState }) =>
@@ -90,7 +96,7 @@ function Navbar() {
     };
 
     fetchCryptoPrices();
-  }, [dispatch]);
+  }, [dispatch, locale]);
 
   return (
     <div
@@ -236,21 +242,21 @@ function Navbar() {
           className="col-md-2 d-flex flex-row contact-container"
           style={{ display: "flex", alignItems: "center", fontSize: "17px" }}
         >
-          <Link to="/contact" className="nav-link text-white">
-            {messages[locale].navbar.contact}
+          <Link to={`/Contact`} className="nav-link text-white">
+            <FormattedMessage id="navbar.contact" />
           </Link>
 
           <Link
-            to="/about"
+            to={`/About`}
             className="nav-link text-white"
             style={{ marginLeft: "20px", color: "#000" }}
           >
-            {messages[locale].navbar.about}
+            {intl.formatMessage({ id: "navbar.about" })}
           </Link>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

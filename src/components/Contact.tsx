@@ -5,31 +5,30 @@ import EmailIcon from "@mui/icons-material/Email";
 import img1 from "../Images/house1.jpg";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "../translations/GlobalContext";
+import { FormattedMessage } from "react-intl";
 
-function Contact() {
-  const { locale, messages } = useGlobalContext();
+interface ContactProps {
+  changeLanguage: (newLocale: string) => void;
+  locale: string;
+}
+
+const Contact: React.FC<ContactProps> = ({ changeLanguage, locale }) => {
   return (
     <>
-      <Navbar />
+      <Navbar changeLanguage={changeLanguage} locale={locale} />
       <div
-        className="bg-image"
+        className="bg-image "
         style={{
           backgroundImage: `url(${img1})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          height: "100vh",
         }}
       >
         <div className="container-contact">
           <div className="details-contact">
             <h1 style={{ textAlign: "start" }}>
               {" "}
-              {messages[locale].contact.title}
+              <FormattedMessage id="contact.title" />
             </h1>
-            <p style={{ textAlign: "justify" }}>
-              {messages[locale].contact.text}
-            </p>
+            <p style={{ textAlign: "justify" }}></p>
 
             <div className="contact-icon">
               <div>
@@ -42,7 +41,7 @@ function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {messages[locale].contact.whatsapp}
+                  <FormattedMessage id="contact.whatsapp" />
                 </Link>
               </div>
             </div>
@@ -58,7 +57,7 @@ function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {messages[locale].contact.telegram}
+                  <FormattedMessage id="contact.telegram" />
                 </Link>
               </div>
             </div>
@@ -74,7 +73,7 @@ function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {messages[locale].contact.linkedIn}
+                  <FormattedMessage id="contact.linkedIn" />
                 </Link>
               </div>
             </div>
@@ -116,6 +115,6 @@ function Contact() {
       </div>
     </>
   );
-}
+};
 
 export default Contact;

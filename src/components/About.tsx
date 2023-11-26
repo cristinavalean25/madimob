@@ -1,40 +1,51 @@
 import "../index.css";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { useGlobalContext } from "../translations/GlobalContext";
+import { FormattedMessage } from "react-intl";
+import Navbar from "./Navbar";
 
-function About() {
-  const { locale, messages } = useGlobalContext();
+interface AboutProps {
+  changeLanguage: (newLocale: string) => void;
+  locale: string;
+}
 
+const About: React.FC<AboutProps> = ({ changeLanguage, locale }) => {
   return (
     <>
-      <Navbar />
+      <Navbar changeLanguage={changeLanguage} locale={locale} />
       <div className="container-fluid w-100 h-100 d-flex p-3 pt-5 pb-5 justify-content-center big-container-about">
         <div className="container-about">
           <div className="row h-100 p-3">
-            <h1
-              style={{
-                fontSize: "34px",
-                color: "#f47521",
-                textAlign: "center",
-              }}
-            >
-              {messages[locale].about.title}
+            <h1 className="about-title">
+              <FormattedMessage id="about.title" />
             </h1>
 
-            <p className="body-text">{messages[locale].about.paragraph_1}</p>
-            <p className="body-text"> {messages[locale].about.paragraph_2}</p>
-            <p className="body-text"> {messages[locale].about.paragraph_3}</p>
-            <p className="body-text">{messages[locale].about.paragraph_4}</p>
-            <p className="body-text">{messages[locale].about.paragraph_5}</p>
-            <p className="body-text">{messages[locale].about.paragraph_6}</p>
-            <p className="body-text">{messages[locale].about.paragraph_7}</p>
+            <p className="body-text">
+              <FormattedMessage id="about.paragraph_1" />
+            </p>
+            <p className="body-text">
+              <FormattedMessage id="about.paragraph_2" />
+            </p>
+            <p className="body-text">
+              <FormattedMessage id="about.paragraph_3" />
+            </p>
+            <p className="body-text">
+              <FormattedMessage id="about.paragraph_4" />
+            </p>
+            <p className="body-text">
+              <FormattedMessage id="about.paragraph_5" />
+            </p>
+            <p className="body-text">
+              <FormattedMessage id="about.paragraph_6" />
+            </p>
+            <p className="body-text">
+              <FormattedMessage id="about.paragraph_7" />
+            </p>
           </div>
         </div>
       </div>
       <Footer />
     </>
   );
-}
+};
 
 export default About;

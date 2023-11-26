@@ -1,13 +1,15 @@
 import { Facebook, Instagram, WhatsApp } from "@mui/icons-material";
+import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "../translations/GlobalContext";
 
 function Footer() {
-  const { locale, messages } = useGlobalContext();
   return (
     <div>
       <div className="text-container">
-        <h3 className="text-white">{messages[locale].footer.text}</h3>
+        <h3 className="text-white">
+          {" "}
+          <FormattedMessage id="footer.text" />
+        </h3>
         <div className="footer-icons">
           <Link
             to="https://www.facebook.com/MADimob.ro"

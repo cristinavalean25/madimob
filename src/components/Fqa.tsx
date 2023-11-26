@@ -1,10 +1,16 @@
 import { useState } from "react";
-import { useGlobalContext } from "../translations/GlobalContext";
+import "../index.css";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import { FormattedMessage, useIntl } from "react-intl";
 
-function Fqa() {
-  const { locale, messages } = useGlobalContext();
+interface FqaProps {
+  changeLanguage: (newLocale: string) => void;
+  locale: string;
+}
+
+const Fqa: React.FC<FqaProps> = ({ changeLanguage, locale }) => {
+  const intl = useIntl();
   const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null);
 
   const handleQuestionClick = (questionKey: string) => {
@@ -13,7 +19,7 @@ function Fqa() {
 
   return (
     <>
-      <Navbar />
+      <Navbar changeLanguage={changeLanguage} locale={locale} />
       <div
         className="container-fluid w-100 vh-100 d-flex p-3 pt-5  justify-content-center"
         style={{
@@ -25,6 +31,7 @@ function Fqa() {
         <div className="container-faq">
           <div className="row  faq">
             <h2
+              className="faq-title"
               style={{
                 textAlign: "center",
                 padding: 10,
@@ -32,56 +39,61 @@ function Fqa() {
                 color: "#f47521",
               }}
             >
-              {messages[locale].FQA.title}
+              <FormattedMessage id="FQA.title" />
             </h2>
 
-            {Array.from({ length: 20 }, (_, i) => i + 1).map((i) => {
+            {Array.from({ length: 10 }, (_, i) => i + 1).map((i) => {
               const questionKey = `question_${i}`;
               const answerKey = `${questionKey}_answer`;
 
-              if (
-                messages[locale].FQA[questionKey] &&
-                messages[locale].FQA[answerKey]
-              ) {
-                const isQuestionSelected = selectedQuestion === questionKey;
+              const isQuestionSelected = selectedQuestion === questionKey;
+              const answer = intl.formatMessage({
+                id: `FQA.${answerKey}`,
+                defaultMessage: "Error ",
+              });
 
-                return (
+              console.log("questionKey:", questionKey);
+              console.log("answerKey:", answerKey);
+
+              return (
+                <div
+                  key={questionKey}
+                  style={{ marginBottom: 10, color: "#fff" }}
+                >
                   <div
-                    key={questionKey}
-                    style={{ marginBottom: 10, color: "#fff" }}
+                    style={{
+                      cursor: "pointer",
+                      fontWeight: isQuestionSelected ? "bold" : "normal",
+                      fontSize: 21,
+                      marginBottom: "1%",
+                    }}
+                    onClick={() => handleQuestionClick(questionKey)}
                   >
+                    <FormattedMessage id={`FQA.${questionKey}`} />
+                  </div>
+
+                  {isQuestionSelected && (
                     <div
                       style={{
-                        cursor: "pointer",
-                        fontWeight: isQuestionSelected ? "bold" : "normal",
-                        fontSize: 21,
-                        marginBottom: "1%",
+                        marginLeft: 20,
+                        color: "#ddd",
+                        maxHeight: "300px",
+                        overflowY: "auto",
                       }}
-                      onClick={() => handleQuestionClick(questionKey)}
                     >
-                      {messages[locale].FQA[questionKey]}
+                      {Array.isArray(answer) ? (
+                        answer.map((paragraph: string, index: number) => (
+                          <p key={index}>{paragraph}</p>
+                        ))
+                      ) : (
+                        <p className="question-answer">
+                          <FormattedMessage id={`FQA.${answer}`} />
+                        </p>
+                      )}
                     </div>
-
-                    {isQuestionSelected && (
-                      <div
-                        style={{
-                          marginLeft: 20,
-                          color: "#ddd",
-                          maxHeight: "300px",
-                          overflowY: "auto",
-                        }}
-                      >
-                        {messages[locale].FQA[answerKey].map(
-                          (answer: string, index: number) => (
-                            <p key={index}>{answer}</p>
-                          )
-                        )}
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-              return null;
+                  )}
+                </div>
+              );
             })}
           </div>
         </div>
@@ -89,6 +101,6 @@ function Fqa() {
       <Footer />
     </>
   );
-}
+};
 
 export default Fqa;

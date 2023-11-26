@@ -1,8 +1,4 @@
 {
-  "home": {
-    "title": "Bine ați venit pe pagina principală",
-    "content": "Acesta este conținutul paginii principale."
-  },
   "navbar": {
     "contact": "Contact",
     "about": "Despre noi"
@@ -48,7 +44,7 @@
     "question_5": "Sunt legale tranzacțiile imobiliare cu criptomonede ?",
     "question_6": "Care sunt avantajele cumpărării de proprietăți cu criptomonede ?",
     "question_7": "Cum se determină valoarea proprietății în criptomonede ?",
-    "question_8": "Care sunt implicatiile fiscale ale cumpărării de proprietăți cu criptomonede ?",
+
     "question_9": "Cât durează o tranzacție imobiliară cu criptomonede ?",
     "question_10": "Oferiți asistență pentru cei care cumpără pentru prima dată cu criptomonede ?",
     "question_11": "Pot să-mi vând proprietatea pentru criptomonede ?",
