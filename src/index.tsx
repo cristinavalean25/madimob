@@ -5,8 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { IntlProvider, MessageFormatElement } from "react-intl";
-import translationsRo from "../src/translations/rom.json";
-import translationsEn from "../src/translations/eng.json";
+import translationsRo from "../src/translations/ro.json";
+import translationsEn from "../src/translations/en.json";
 
 type TranslationMessages = Record<
   string,
