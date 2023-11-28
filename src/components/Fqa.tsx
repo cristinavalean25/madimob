@@ -21,11 +21,10 @@ const Fqa: React.FC<FqaProps> = ({ changeLanguage, locale }) => {
     <>
       <Navbar changeLanguage={changeLanguage} locale={locale} />
       <div
-        className="container-fluid w-100 vh-100 d-flex p-3 pt-5  justify-content-center"
+        className="container-fluid-fqa"
         style={{
           backgroundColor: "#000",
           color: "#fff",
-          zIndex: 100,
         }}
       >
         <div className="container-faq">
